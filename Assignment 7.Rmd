@@ -1,0 +1,116 @@
+---
+title: "Assignment 7"
+author: "Kimaya Rane Rod Vasquez Ryan Nguyen"
+date: "11/9/2017"
+output: html_document
+---
+# Visualizing Demographic Characteristics of Foreign Born People in Spokane 
+
+```{r}
+library(htmlwidgets)
+library(dplyr)
+library(taucharts)
+```
+
+## Visualizing the ages of foreign born people in Spokane:
+
+* please note that the "count" axis is a percentage value.
+
+```{r}
+library(readxl)
+Age=read_excel("agespofobo.xlsx")
+```
+
+
+```{r}
+Age$Status=as.factor(Age$Status)
+agebartauplot=tauchart(Age)%>%tau_bar("Age","Count","Status")%>%
+  tau_tooltip(c("Age", "Status", "Count"))%>% tau_legend()
+##saveWidget(gearbartauplot,file = "gearbartauplot.html",selfcontained = TRUE)
+
+agebartauplot
+```
+
+The native population seems to be more skewed towards younger age groups where in contrast, citizens tend to be skewed toward older age groups.Non-citizens narrow in on the 18-54 age group and lastly, foreign populations seem to be most distributed in the 45-54 section and drop as it narrows down to either extreme on the graph.
+
+
+## Visualizing the gender of foregin born people in Spokane:
+
+```{r}
+library(readxl)
+Sex=read_excel("sexspofobo.xlsx")
+```
+
+```{r}
+library(taucharts)
+Sex$Sex=as.factor(Sex$Sex)
+sexbartauplot=tauchart(Sex)%>%tau_bar("Status","Count","Sex")%>%
+  tau_tooltip(c("Status", "Sex", "Count"))%>% tau_legend()
+##saveWidget(gearbartauplot,file = "gearbartauplot.html",selfcontained = TRUE)
+
+sexbartauplot
+```
+
+Comparing sex against different citizenship statuses, there seems to always be a higher number in females than males. This difference in ratio most likely will have an effect on the rest of the characteristics in the data since there is a truth behind the discrepancy of men to female’s involvement and roles in society. Differences in education levels, occupations etc. could possibly be contributed back to the gender differences. 
+
+## Visualizing the various occupations of foregin born people in Spokane:
+
+```{r}
+library(readxl)
+Occupation=read_excel("occupationspofobo.xlsx")
+```
+
+
+```{r}
+library(taucharts)
+Occupation$Status=as.factor(Occupation$Status)
+occupbartauplot=tauchart(Occupation)%>%tau_bar("Status","Count","Occupation")%>%
+tau_tooltip(c("Status", "Occupation", "Count"))%>% tau_legend()
+##saveWidget(gearbartauplot,file = "gearbartauplot.html",selfcontained = TRUE)
+
+occupbartauplot
+```
+
+In analyzing the occupations against different statuses of citizenship of the sample, there is a trend of Management business, science and art to be a high employee for all statuses except non-citizens. A reason behind this is that it can be difficult to hire people into big companies and especially business management roles who are undocumented because they cannot fill out the proper paper work. In terms of natural resources, construction and maintenance, it is consistency the lowest employer among all the statuses which again correlated with availability of jobs since natural resources have a lot of limitations and typically represent an exclusive market. 
+
+## Visualizing the various education levels of foregin born people in Spokane
+
+```{r}
+library(readxl)
+Education=read_excel("educationspofobo.xlsx")
+```
+
+
+```{r}
+library(taucharts)
+Education$Status=as.factor(Education$Status)
+educationbartauplot=tauchart(Education)%>%tau_bar("Status","Count","Education")%>%
+tau_tooltip(c("Status", "Education", "Count"))%>% tau_legend()
+##saveWidget(gearbartauplot,file = "gearbartauplot.html",selfcontained = TRUE)
+
+educationbartauplot
+```
+
+The highest rate in “Less than high school graduation” lives in non-citizen which can most likely be contributed to the fact that they don’t have the same opportunities because they can’t sign up for services such as public school. Individuals who have some college or associates degree look in native, and foreign citizens which supports the idea that that individuals have an extra privilege to higher education that non-citizens do not have. Contrastingly however, there seems to be a someone even distribution of indiiduals with a graduate or professional degree among all the statuses.
+
+## Visualizing the races of foregin born people in Spokane:
+
+```{r}
+library(readxl)
+Race=read_excel("RaceSpoFoBo.xlsx")
+```
+
+```{r}
+library(taucharts)
+Race$Race=as.factor(Race$Race)
+racebartauplot=tauchart(Race)%>%tau_bar("Status","Count","Race")%>%
+tau_tooltip(c("Status", "Race", "Count"))%>% tau_legend()
+##saveWidget(gearbartauplot,file = "gearbartauplot.html",selfcontained = TRUE)
+
+racebartauplot
+```
+
+This bar graph is split into different sections based on whether they are Native or Foreign and then the Foreign category is split further into if the Foreign born are Citizens or not. The Graph then compares different races and plots where they lie based on percentage in each category. The bar graph shows how the white race is most prevalent in all four of the categories. We can also see that Asian is the least prevalent native race but relatively strong in the Foreign categories. This graph can also show us how Native Americans are only prevalent in the native category but even then its only around 1.5%. This Bar chart depicts what percentage of each race in the U.S is native or foreign.
+
+
+
